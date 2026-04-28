@@ -65,7 +65,6 @@
     </div>
 
     <script>
-        // Lógica para el Ejercicio B (Sincronizar sliders y números)
         const channels = ['r', 'g', 'b'];
         const preview = document.getElementById('color-preview');
 
@@ -88,7 +87,6 @@
 
             // Sincronizar número -> slider
             num.addEventListener('input', () => {
-                // Validar que no se pase de 255
                 if (num.value > 255) num.value = 255;
                 if (num.value < 0) num.value = 0;
 
