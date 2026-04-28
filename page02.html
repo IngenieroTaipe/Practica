@@ -79,13 +79,11 @@
             const range = document.getElementById(`${channel}-range`);
             const num = document.getElementById(`${channel}-num`);
 
-            // Sincronizar slider -> número
             range.addEventListener('input', () => {
                 num.value = range.value;
                 updateColor();
             });
 
-            // Sincronizar número -> slider
             num.addEventListener('input', () => {
                 if (num.value > 255) num.value = 255;
                 if (num.value < 0) num.value = 0;
