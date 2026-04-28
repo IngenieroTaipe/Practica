@@ -1,0 +1,166 @@
+/* Estilos específicos para Page 01 (Formulario Interactivo) */
+
+.page-header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  background: rgba(30, 41, 59, 0.5);
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Efecto de Floating Labels (Focus) */
+.input-group {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1rem 0 0.5rem 0;
+  border: none;
+  border-bottom: 2px solid #475569;
+  background: transparent;
+  color: #f8fafc;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Ocultar placeholder real para que funcione el :placeholder-shown */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: transparent;
+}
+
+.input-group label {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  color: #94a3b8;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+/* La magia del floating label: se mueve arriba cuando está en focus o cuando NO muestra el placeholder (tiene texto) */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+  top: -10px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-bottom-color: var(--primary-color);
+}
+
+/* Zona de Drag & Drop */
+.drop-zone {
+  border: 2px dashed #475569;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.drop-zone:hover, 
+.drop-zone.dragover {
+  border-color: var(--primary-color);
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1) inset;
+}
+
+.drop-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.drop-text {
+  color: #cbd5e1;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.drop-hint {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.drop-zone input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Botón Submit */
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #00b8cc 100%);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+}
+
+/* Responsividad extra */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem 3rem;
+  }
+}
