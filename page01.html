@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soporte Técnico - Page 01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/page01.css">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <nav class="nav">
+    <div class="nav-brand" style="display: flex; align-items: center;">
+      <img src="assets/logo.svg" alt="TEC Logo" style="height: 40px;">
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="page01.html" class="active">Soporte</a>
+      <a href="page02.html">Página 2</a>
+      <a href="page03.html">Galería</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <h1 class="page-title">Soporte Técnico</h1>
+      <p class="page-subtitle">Llena el siguiente formulario interactivo para contactarnos. Sube una imagen de tu dispositivo si tienes un problema técnico.</p>
+    </header>
+
+    <section class="form-container">
+      <form action="#" method="POST" id="supportForm">
+        
+        <!-- Floating Label Input 1 -->
+        <div class="input-group">
+          <!-- El placeholder es requerido para que funcione el selector :placeholder-shown -->
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <label for="nombre">Nombre Completo</label>
+        </div>
+
+        <!-- Floating Label Input 2 -->
+        <div class="input-group">
+          <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required>
+          <label for="correo">Correo Electrónico</label>
+        </div>
+
+        <!-- Floating Label Textarea -->
+        <div class="input-group">
+          <textarea id="mensaje" name="mensaje" placeholder="Describe tu problema" required></textarea>
+          <label for="mensaje">Describe tu problema</label>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-icon">📁</div>
+          <p class="drop-text">Arrastra y suelta una imagen de tu equipo aquí</p>
+          <p class="drop-hint">o haz clic para buscar en tus archivos (Max 5MB)</p>
+          <input type="file" id="archivo" name="archivo" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Script ligero para darle interactividad básica al Drag & Drop (Feedback visual) -->
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('archivo');
+    const dropText = document.querySelector('.drop-text');
+
+    // Cambiar estilos al arrastrar por encima
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+    });
+
+    // Quitar estilos al salir o soltar
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+      });
+    });
+
+    // Cambiar el texto cuando se selecciona o suelta un archivo
+    dropZone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length) {
+        fileInput.files = files; // Asignar al input oculto
+        dropText.textContent = `Archivo seleccionado: ${files[0].name}`;
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) {
+        dropText.textContent = `Archivo seleccionado: ${fileInput.files[0].name}`;
+      }
+    });
+  </script>
+</body>
+</html>
