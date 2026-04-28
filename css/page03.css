@@ -1,0 +1,151 @@
+/* Estilos específicos para Page 03 (Grid de imágenes) */
+
+.page-header {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Flexbox Gallery */
+.gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.gallery-item {
+  flex: 1 1 350px;
+  max-width: 500px;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15); /* Celeste agua glow */
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  /* Efecto de opacidad base */
+  opacity: 0.6;
+  filter: grayscale(20%);
+}
+
+.gallery-item:hover .gallery-image {
+  /* Efecto de opacidad en hover */
+  opacity: 1;
+  transform: scale(1.08);
+  filter: grayscale(0%);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.overlay-tag {
+  background: var(--primary-color);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .overlay-tag {
+  transform: translateY(0);
+}
+
+.overlay-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  transform: translateY(15px);
+  transition: transform 0.4s ease 0.05s;
+}
+
+.gallery-item:hover .overlay-title {
+  transform: translateY(0);
+}
+
+.overlay-desc {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s;
+}
+
+.gallery-item:hover .overlay-desc {
+  transform: translateY(0);
+}
+
+/* Responsividad extra */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.2rem;
+  }
+  
+  .gallery {
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    flex-basis: 100%;
+    height: 300px;
+  }
+}
